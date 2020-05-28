@@ -3,7 +3,7 @@ job('praveen') {
     description('maven job')
 
     scm {
-        git('https://github.com/Rajireddy08/webapp-project.git', 'master', {node -> node / 'extensions' << '' })
+        git('https://github.com/Rajireddy08/devopstest.git', 'master', {node -> node / 'extensions' << '' })
     }
 
     steps {
