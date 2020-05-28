@@ -1,0 +1,24 @@
+job('praveen') {
+
+    description('maven job')
+
+    scm {
+        git('https://github.com/Rajireddy08/webapp-project.git', 'master', {node -> node / 'extensions' << '' })
+    }
+
+    steps {
+        maven {
+            mavenInstallation('maven')
+            goals('-B -DskipTests clean package')
+        }
+        maven {
+            mavenInstallation('maven')
+            goals('test')
+        }
+        shell('''
+            echo ************RUNNING THE JAR************************
+            java -jar /var/lib/jenkins/workspace/praveen/target/my-app-1.0-SNAPSHOT.jar
+        ''')
+    }
+
+}
